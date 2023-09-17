@@ -1,5 +1,6 @@
 import React from "react";
 import { workOutCycleTemp } from "../data/data-refined";
+import ListItemText from "@mui/material/ListItemText";
 export const Container = () => {
   console.log("workoutcycle", workOutCycleTemp);
   return (
@@ -8,6 +9,7 @@ export const Container = () => {
       <ul>
         {workOutCycleTemp.data.workOutPlan.map((workOutPlan) => (
           <li>
+            <h2>{workOutPlan.day}</h2>
             <ul>
               {workOutPlan.workOut.map((workOut) => (
                 <li>
@@ -15,7 +17,7 @@ export const Container = () => {
                   <ul>
                     {workOut.exercise.map((expercise) => (
                       <li>
-                        <p>{expercise.name}</p>
+                        <ListItemText primary={expercise.name} />
                         <p>{JSON.stringify(expercise.set)}</p>
                       </li>
                     ))}
