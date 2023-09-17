@@ -1,32 +1,25 @@
 import React from "react";
-import { workoutCycle } from "../data/data";
+import { workOutCycleTemp } from "../data/data-refined";
 export const Container = () => {
-  console.log("workoutcycle", workoutCycle);
+  console.log("workoutcycle", workOutCycleTemp);
   return (
     <>
       <div>Container</div>
       <ul>
-        {workoutCycle.map((muscleGroup) => (
+        {workOutCycleTemp.data.workOutPlan.map((workOutPlan) => (
           <li>
-            <h2>{muscleGroup.muscle}</h2>
             <ul>
-              {muscleGroup.workOut.map((workOut) => (
+              {workOutPlan.workOut.map((workOut) => (
                 <li>
-                  <h3>{workOut.workout}</h3>
-                  <table>
-                    <tr>
-                      <th>No</th>
-                      <th>Reps</th>
-                      <th>weight</th>
-                    </tr>
-                    {workOut.set.map((set) => (
-                      <tr>
-                        <td>{set.setNo}</td>
-                        <td>{set.reps}</td>
-                        <td>{set.weight}</td>
-                      </tr>
+                  <h3>{workOut.muscle}</h3>
+                  <ul>
+                    {workOut.exercise.map((expercise) => (
+                      <li>
+                        <p>{expercise.name}</p>
+                        <p>{JSON.stringify(expercise.set)}</p>
+                      </li>
                     ))}
-                  </table>
+                  </ul>
                 </li>
               ))}
             </ul>
